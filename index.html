@@ -2,28 +2,41 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
         <!-- jquery, moment, and angular have to get included before fullcalendar -->
+        
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
         <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
         <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
         <script type="text/javascript" src="main.js"></script>
     </head>
 
     <body ng-app="myApp" ng-controller="MyController">
+        
         <div>
             <form>
-                <input ng-model="title" type="text">
-                <input ng-model="y" type="number">
-                <input ng-model="m" type="number">
-                <input ng-model="d1" type="number">
-                <input ng-model="d2" type="number">
+                <input ng-model="title" type="text" placeholder="Title">
+                <input ng-model="year" type="number" placeholder="Year">
+                <input ng-model="month" type="number" placeholder="Month">
+                <input ng-model="startDate" type="number" placeholder="Start Date">
+                <input ng-model="startHour" type="number" placeholder="Start Hour" max="24">
+                <input ng-model="finishDate" type="number" placeholder="Finish Date">
+                <input ng-model="finishHour" type="number" placeholder="Finish Hour" max="24">
                 <button ng-click="addEvent()">Add Event</button>
             </form>
         </div>
-        <div ui-calendar="uiConfig.calendar" ng-model="eventSources">
         
+        <h2>{{alertMessage}}</h2>
+        
+        <div ng-repeat="e in events">
+            <input ng-model="e.title">
+            <button type="submit" ng-click="remove($index)">REMOVE</button>
+        </div>
+        <! Set ng-model to eventSource1 or eventSource2 to use Google Calendar>
+        <div ui-calendar="uiConfig.calendar" ng-model="eventSources" />
     </body>
 </html>
