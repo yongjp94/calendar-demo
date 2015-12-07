@@ -16,27 +16,28 @@
     </head>
 
     <body ng-app="myApp" ng-controller="MyController">
-        
-        <div>
-            <form>
-                <input ng-model="title" type="text" placeholder="Title">
-                <input ng-model="year" type="number" placeholder="Year">
-                <input ng-model="month" type="number" placeholder="Month">
-                <input ng-model="startDate" type="number" placeholder="Start Date">
-                <input ng-model="startHour" type="number" placeholder="Start Hour" max="24">
-                <input ng-model="finishDate" type="number" placeholder="Finish Date">
-                <input ng-model="finishHour" type="number" placeholder="Finish Hour" max="24">
-                <button ng-click="addEvent()">Add Event</button>
-            </form>
+        <div class='container'>
+            <div>
+                <form>
+                    <input ng-model="title" type="text" placeholder="Title">
+                    <input ng-model="year" type="number" placeholder="Year">
+                    <input ng-model="month" type="number" placeholder="Month">
+                    <input ng-model="startDate" type="number" placeholder="Start Date">
+                    <input ng-model="startHour" type="number" placeholder="Start Hour" max="24">
+                    <input ng-model="finishDate" type="number" placeholder="Finish Date">
+                    <input ng-model="finishHour" type="number" placeholder="Finish Hour" max="24">
+                    <button ng-click="addEvent()">Add Event</button>
+                </form>
+            </div>
+
+            <h2>{{alertMessage}}</h2>
+
+            <div ng-repeat="e in events">
+                <input ng-model="e.title">
+                <button type="submit" ng-click="remove($index)">REMOVE</button>
+            </div>
+            <! Set ng-model to eventSource1 or eventSource2 to use Google Calendar>
+            <div ui-calendar="uiConfig.calendar" ng-model="eventSources" />
         </div>
-        
-        <h2>{{alertMessage}}</h2>
-        
-        <div ng-repeat="e in events">
-            <input ng-model="e.title">
-            <button type="submit" ng-click="remove($index)">REMOVE</button>
-        </div>
-        <! Set ng-model to eventSource1 or eventSource2 to use Google Calendar>
-        <div ui-calendar="uiConfig.calendar" ng-model="eventSources" />
     </body>
 </html>

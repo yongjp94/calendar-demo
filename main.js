@@ -72,6 +72,6 @@ myApp.controller('MyController', function($scope, $compile, uiCalendarConfig) {
     };
 
     /* event sources array*/
-    $scope.eventSources = [$scope.events];
+    $scope.eventSources = [$scope.events, $scope.eventSources1, $scope.eventSources2];
     console.log($scope.events);
 });
