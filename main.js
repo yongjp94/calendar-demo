@@ -15,7 +15,7 @@ myApp.controller('MyController', function($scope, $compile, uiCalendarConfig) {
             googleCalendarApiKey: googleCalendarKey
     };
 
-    $scope.eventSource2 = {
+    $scope.eventSources2 = {
             url: "uw.edu_mcctklqdrmu7jmgquutmv6p3l0@group.calendar.google.com",
             googleCalendarApiKey: googleCalendarKey
     };
